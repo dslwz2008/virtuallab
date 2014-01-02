@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DemoVikings/Scripts/ListenNetwork.cs">
+    <Files>
+      <File FileName="Assets/DemoVikings/Scripts/DistributeEvent.cs" Line="11" Column="1" />
+      <File FileName="Assets/DemoVikings/Scripts/SimulateFlood.cs" Line="92" Column="6" />
+      <File FileName="Assets/DemoVikings/Scripts/MainMenuVik.cs" Line="34" Column="46" />
+      <File FileName="Assets/DemoVikings/Scripts/NetworkUtils.cs" Line="25" Column="3" />
+      <File FileName="Assets/DemoVikings/Scripts/ListenNetwork.cs" Line="17" Column="3" />
+      <File FileName="Assets/DemoVikings/Scripts/Test.cs" Line="11" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

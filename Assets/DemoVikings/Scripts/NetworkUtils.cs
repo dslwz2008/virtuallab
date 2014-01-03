@@ -8,6 +8,7 @@ public class NetworkUtils {
 	public static int requestIntervel = 0.5;
 	private static string paraName = "";
 	private static int startNumber = 0, endNumber = 0;
+	public static ArrayList<Texture2D> textures = new ArrayList<Texture2D>();
 	
 	public static IEnumerator PostParameters(List<string> paras){
 		paraName = NetworkUtils.ParameterToString(paras);
@@ -56,11 +57,23 @@ public class NetworkUtils {
 					break;
 				case "1"://没有回应完成，先取部分图片，继续请求
 					for(int index = startNumber; index < endNumber; index++){
-						WWW getimage = new WWW();
+						string getImageUrl = serverUrl + "get_image?paraname=" + paraName + "&imageorder=" + index.ToString();
+						WWW getimage = new WWW(getImageUrl);
+						yield return getimage;
+						textures.Append(getimage.texture);
 					}
+					startNumber = endNumber;
 					break;
 				case "2"://回应结束了，把剩下的图片全部取出，停止请求
-					
+					if(textures.Count < endNumber){
+						for(int index = textures.Count; index < endNumber; index++){
+							string getImageUrl = serverUrl + "get_image?paraname=" + paraName + "&imageorder=" + index.ToString();
+							WWW getimage = new WWW(getImageUrl);
+							yield return getimage;
+							textures.Append(getimage.texture);
+						}
+					}
+					startNumber = endNumber = 0;
 					needStop = true;
 					break;
 				default://有错误

@@ -22,4 +22,5 @@ MonoBehaviour:
   - DestroyRpc
   - ChangeQuadTexture
   - PlayOrPauseMovie
+  - DownloadSpecificImages
   DisableAutoOpenWizard: 0

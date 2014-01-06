@@ -4,7 +4,7 @@ using System.Collections;
 public class ListenNetwork : MonoBehaviour {
 
 	void OnEnable(){
-		StartCoroutine("NetworkUtils.ListenAndHandle");
+		//StartCoroutine(NetworkUtils.ListenAndHandle());
 	}
 	
 	void OnDisable(){

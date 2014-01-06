@@ -11,6 +11,11 @@ public class NetworkUtils : Photon.MonoBehaviour{
 	private string paraName = "";
 	private int startNumber = 0, endNumber = 0;
 	private bool needStop = false;
+	private DistributeEvent de = null;
+	
+	void Start(){
+		de = GameObject.Find("/Scripts").GetComponent<DistributeEvent>();
+	}
 	
 	public IEnumerator PostParameters(List<string> paras){
 		paraName = ParameterToString(paras);
@@ -58,11 +63,12 @@ public class NetworkUtils : Photon.MonoBehaviour{
 				case "1"://没有回应完成，先取部分图片，继续请求.for all clients
 					photonView.RPC("DownloadSpecificImages", PhotonTargets.AllBuffered, startNumber, endNumber);
 					startNumber = endNumber;
-					DistributeEvent.animateTexture();
+					de.animateTexture();
 					break;
 				case "2"://回应结束了，把剩下的图片全部取出，停止请求.for all clients
 					photonView.RPC("DownloadSpecificImages", PhotonTargets.AllBuffered, NetworkUtils.textures.Count, endNumber);
-					startNumber = endNumber = 0;
+					//startNumber = endNumber = 0;
+					de.animateTexture();
 					needStop = true;
 					break;
 				default://有错误

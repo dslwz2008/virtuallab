@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TriggerPlayVideo : MonoBehaviour {
 	void OnMouseDown(){
-		DistributeEvent.playVideo();
+		DistributeEvent de = GameObject.Find("/Scripts").GetComponent<DistributeEvent>();
+		de.playVideo();
 	}
 }

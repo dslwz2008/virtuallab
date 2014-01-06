@@ -7,7 +7,8 @@ public class PlayVideo : Photon.MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		DistributeEvent.playVideo += OnMouseDown;
+		DistributeEvent de = GameObject.Find("/Scripts").GetComponent<DistributeEvent>();
+		de.playVideo += OnMouseDown;
 		renderer.material.mainTexture = texVideo;
 		texVideo.Stop();
 		texVideo.loop = true;

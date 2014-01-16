@@ -23,6 +23,10 @@ public class FrameBuffer {
 		return queue;
 	}
 	
+	public void Clear(){
+		queue.Clear();
+	}
+	
 	/// <summary>
 	/// frame buffer.
 	/// </summary>

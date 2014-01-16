@@ -16,6 +16,7 @@ public class AnimateTexture : Photon.MonoBehaviour {
 	void StartAnimation(){
 		if(!hasStart){
 			InvokeRepeating("DisplayTexturesFromBuffer", 0.0f, repeatRate);
+			index = 0;
 			hasStart = true;
 		}
 	}
@@ -26,6 +27,7 @@ public class AnimateTexture : Photon.MonoBehaviour {
 	
 	[RPC]
 	void ChangeQuadTexture(PhotonMessageInfo info){
+		Debug.Log(index);
 		renderer.material.mainTexture = NetworkUtils.textures[index];
 		index++;
 		index %= (NetworkUtils.textures.Count);

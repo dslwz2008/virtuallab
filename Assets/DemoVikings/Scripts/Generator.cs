@@ -25,9 +25,17 @@ public class Generator : MonoBehaviour {
 	public float frameTime = 0.5f;
 	
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		parent = GameObject.Find("/Instances");
 		InvokeRepeating("GenerateOneFrame", 0.5f, frameTime);
+	}
+	
+	void OnDisable(){
+		CancelInvoke("GenerateOneFrame");
+		foreach(Transform t in parent.transform){
+			Destroy(t.gameObject);
+		}
+		lastFrame = null;
 	}
 	
 	// Update is called once per frame

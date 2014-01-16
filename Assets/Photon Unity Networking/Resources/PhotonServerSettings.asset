@@ -23,4 +23,5 @@ MonoBehaviour:
   - ChangeQuadTexture
   - PlayOrPauseMovie
   - DownloadSpecificImages
+  - TurnOnOrOffCrowd
   DisableAutoOpenWizard: 0

@@ -11,21 +11,21 @@ public class ReadAndParseDataFromDB : MonoBehaviour {
 	public float readInterval = 10.0f;
 	public int linesPerRead = 10000;
 	private int startLine = 0;
-
-	void OnGUI(){
-//		GUILayout.Label("数据库名称：");
-//		GUILayout.TextField(dbName, 50, GUILayout.Width(50));
-//		GUILayout.Label("表名称：");
-//		GUILayout.TextField(tableName, 50, GUILayout.Width(50));
-//		if(GUILayout.Button("开始")){			
-//		}
-	}	
+	
+	public GameObject source = null;
+	public GameObject target = null;
 	
 	// Use this for initialization
-	void Start () {		
+	void OnEnable () {
 		sqlitedb = new SqliteDB();
 		sqlitedb.OpenDB(dbName);		
 		InvokeRepeating("ReadOnce", 0f, readInterval);
+	}
+	
+	void OnDisable(){
+		CancelInvoke("ReadOnce");
+		sqlitedb.CloseDB();
+		startLine = 0;
 	}
 	
 	public void ReInitialiseReader(){
@@ -76,7 +76,7 @@ public class ReadAndParseDataFromDB : MonoBehaviour {
 				float posx = float.Parse(data[3].ToString());
 				float posy = 8.4f;//最上层//float.Parse(data[4].ToString());
 				float posz = float.Parse(data[4].ToString());
-				People p = new People(peopleID, peopleStatus, new Vector3(posx,posy,posz));
+				People p = new People(peopleID, peopleStatus, PreTransform(new Vector3(posx,posy,posz)));
 				frame.peoples.Add(peopleID, p);
 			}
 			FrameBuffer.GetInstance().GetQueue().Enqueue(frame);
@@ -90,5 +90,13 @@ public class ReadAndParseDataFromDB : MonoBehaviour {
 			}
 		}
 		
+	}
+	
+	Vector3 PreTransform(Vector3 pos){
+		Vector3 newpos = (pos - source.transform.position) * 0.05f;
+		//Quaternion rotation = Quaternion.AngleAxis(180.0f, Vector3.up);
+		newpos = new Vector3(-newpos.x, newpos.y, -newpos.z);
+		newpos = newpos + target.transform.position;
+		return newpos;
 	}
 }

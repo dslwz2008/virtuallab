@@ -33,9 +33,17 @@ public class NetworkUtils : Photon.MonoBehaviour{
 			Debug.Log(postform.error);
 		}else{//请求成功
 			Debug.Log(postform.text);
+			initialise();
 			StartCoroutine(ListenAndHandle());
 		}
 	}
+	
+	public void initialise(){
+		startNumber = 0;
+		endNumber = 0;
+		needStop = false;
+		NetworkUtils.textures.Clear();
+	}	
 	
 	public IEnumerator ListenAndHandle(){
 		while(!needStop){
@@ -61,13 +69,15 @@ public class NetworkUtils : Photon.MonoBehaviour{
 					yield return new WaitForSeconds(requestIntervel);
 					break;
 				case "1"://没有回应完成，先取部分图片，继续请求.for all clients
-					photonView.RPC("DownloadSpecificImages", PhotonTargets.AllBuffered, startNumber, endNumber);
+					//photonView.RPC("DownloadSpecificImages", PhotonTargets.AllBuffered, startNumber, endNumber);
+					StartCoroutine(DownloadSpecificImages(startNumber, endNumber));
 					startNumber = endNumber;
 					de.animateTexture();
 					break;
 				case "2"://回应结束了，把剩下的图片全部取出，停止请求.for all clients
-					photonView.RPC("DownloadSpecificImages", PhotonTargets.AllBuffered, NetworkUtils.textures.Count, endNumber);
+					//photonView.RPC("DownloadSpecificImages", PhotonTargets.AllBuffered, NetworkUtils.textures.Count, endNumber);
 					//startNumber = endNumber = 0;
+					StartCoroutine(DownloadSpecificImages(NetworkUtils.textures.Count, endNumber));
 					de.animateTexture();
 					needStop = true;
 					break;
@@ -79,8 +89,8 @@ public class NetworkUtils : Photon.MonoBehaviour{
 		}
 	}
 	
-	[RPC]
-	IEnumerator DownloadSpecificImages(int start, int end, PhotonMessageInfo info){
+	//IEnumerator DownloadSpecificImages(int start, int end, PhotonMessageInfo info){
+	IEnumerator DownloadSpecificImages(int start, int end){
 		if(start < end){
 			for(int index = start; index < end; index++){
 				string getImageUrl = serverUrl + "get_image?paraname=" + paraName + "&imageorder=" + index.ToString();

@@ -13,11 +13,25 @@ public class SimulateFlood : MonoBehaviour {
 	
 	private NetworkUtils nutils = null;
 	
+	private Shader diffuse = null;
+	private Shader selfillumin = null;
+	
 	// Use this for initialization
 	void Start () {
 		nutils = GameObject.Find("/Scripts").GetComponent<NetworkUtils>();
+		
+		diffuse = Shader.Find("Diffuse");
+		selfillumin = Shader.Find("Self-Illumin/Diffuse");
 	}
 	
+	void OnMouseEnter(){
+		renderer.material.shader = selfillumin;
+	}
+	
+	void OnMouseExit(){
+		renderer.material.shader = diffuse;
+	}
+		
 	void OnMouseDown(){
         Camera.main.farClipPlane = Camera.main.nearClipPlane + 0.1f;
 		needSetParameter = true;
@@ -132,7 +146,7 @@ public class SimulateFlood : MonoBehaviour {
 				fFresnel_coeff >= 0.0f && fFresnel_coeff <= 1.0f &&
 				fInflux >= 10f && fInflux <= 300 &&
 				fWave_scale >= 0.0f && fWave_scale <= 1.0f &&
-				Utils.IsValidIP(serverUrl)){
+				Utilities.IsValidIP(serverUrl)){
 				return true;
 			}else{
 				return false;

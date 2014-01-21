@@ -1,36 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DemoVikings\Scripts\NetworkUtils.cs">
-    <Files>
-      <File FileName="Assets\DemoVikings\Scripts\NetworkUtils.cs" Line="39" Column="3" />
-      <File FileName="Assets\DemoVikings\Scripts\SimulateFlood.cs" Line="111" Column="34" />
-      <File FileName="Assets\DemoVikings\Scripts\DistributeEvent.cs" Line="13" Column="35" />
-      <File FileName="Assets\DemoVikings\Scripts\PlayVideo.cs" Line="22" Column="48" />
-      <File FileName="Assets\DemoVikings\Scripts\AnimateTexture.cs" Line="20" Column="20" />
-      <File FileName="Assets\DemoVikings\Scripts\DataSupervisor.cs" Line="10" Column="59" />
-      <File FileName="Assets\DemoVikings\Scripts\ReadAndParseDataFromDB.cs" Line="9" Column="44" />
-      <File FileName="Assets\DemoVikings\Scripts\Generator.cs" Line="35" Column="1" />
-      <File FileName="Assets\DemoVikings\Scripts\CrowdButtonMouseEvent.cs" Line="30" Column="40" />
-      <File FileName="Assets\DemoVikings\Scripts\FrameBuffer.cs" Line="24" Column="3" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True" />
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="E:\projects\VirtualLab1\Assets\DemoVikings\Scripts\ListenNetwork.cs" line="7" />
-      <Breakpoint file="E:\projects\VirtualLab1\Assets\DemoVikings\Scripts\ListenNetwork.cs" line="11" />
-      <Breakpoint file="E:\projects\VirtualLab1\Assets\DemoVikings\Scripts\NetworkUtils.cs" line="51" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

@@ -11,9 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b51608f6a3a4584d87dc9aecf104cfd, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  HostType: 0
-  ServerAddress: 127.0.0.1
+  HostType: 1
+  ServerAddress: app-asia.exitgamescloud.com
   ServerPort: 5055
-  AppID: 
-  RpcList: []
+  AppID: e6641d86-c077-4aa6-b25d-69e6b97d8f2b
+  RpcList:
+  - ChangeQuadTexture
+  - SendChatMessage
+  - TurnOnOrOffCrowd
+  - PlayOrPauseMovie
+  - InstantiateRpc
+  - OnAwakeRPC
+  - DestroyRpc
   DisableAutoOpenWizard: 0
